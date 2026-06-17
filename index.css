@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ===================== Fonts ===================== */
+:root {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.font-script {
+  font-family: "Cormorant Garamond", "Manrope", serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.font-hand {
+  font-family: "Cormorant Garamond", "Manrope", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+.font-display {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.heading {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ===================== Themes ===================== */
+:root,
+[data-theme="pink"] {
+  --c-bg-1: #ffe1f1;
+  --c-bg-2: #ffcfe5;
+  --c-bg-3: #f9c0dd;
+  --c-accent: #ec4899;
+  --c-accent-2: #f472b6;
+  --c-accent-rgb: 236, 72, 153;
+  --c-text: #5b1f43;
+  --c-text-soft: #8a4a6b;
+  --c-card: rgba(255, 255, 255, 0.55);
+  --c-border: rgba(255, 255, 255, 0.75);
+  --c-glow: rgba(244, 114, 182, 0.55);
+}
+[data-theme="purple"] {
+  --c-bg-1: #ede7ff;
+  --c-bg-2: #ddd3fe;
+  --c-bg-3: #e2d0ff;
+  --c-accent: #8b5cf6;
+  --c-accent-2: #a78bfa;
+  --c-accent-rgb: 139, 92, 246;
+  --c-text: #3a1d72;
+  --c-text-soft: #6b56a6;
+  --c-card: rgba(255, 255, 255, 0.52);
+  --c-border: rgba(255, 255, 255, 0.72);
+  --c-glow: rgba(167, 139, 250, 0.5);
+}
+[data-theme="mint"] {
+  --c-bg-1: #e7fcf4;
+  --c-bg-2: #c9f6e3;
+  --c-bg-3: #acefd2;
+  --c-accent: #10b981;
+  --c-accent-2: #34d399;
+  --c-accent-rgb: 16, 185, 129;
+  --c-text: #0c3b2e;
+  --c-text-soft: #2f7a64;
+  --c-card: rgba(255, 255, 255, 0.52);
+  --c-border: rgba(255, 255, 255, 0.74);
+  --c-glow: rgba(52, 211, 153, 0.5);
+}
+
+/* ===================== Helpers ===================== */
+.app-bg {
+  background:
+    radial-gradient(1200px 800px at 12% 8%, rgba(var(--c-accent-rgb), 0.2), transparent 60%),
+    radial-gradient(1000px 760px at 88% 92%, rgba(var(--c-accent-rgb), 0.16), transparent 60%),
+    linear-gradient(140deg, var(--c-bg-1), var(--c-bg-2) 55%, var(--c-bg-3));
+  color: var(--c-text);
+}
+.glass {
+  background: var(--c-card);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid var(--c-border);
+}
+.text-accent {
+  color: var(--c-accent);
+}
+.text-soft {
+  color: var(--c-text-soft);
+}
+.btn-accent {
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2));
+  color: #fff;
+  box-shadow: 0 14px 34px -10px var(--c-glow);
+}
+.btn-accent:hover {
+  filter: brightness(1.05);
+}
+.ring-accent {
+  box-shadow: 0 0 0 3px rgba(var(--c-accent-rgb), 0.25);
+}
+.active-pill {
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2));
+  color: #fff;
+  box-shadow: 0 10px 26px -8px var(--c-glow);
+}
+
+/* shimmering text */
+.shimmer-text {
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-2), #ffffff, var(--c-accent-2), var(--c-accent));
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ===================== Keyframes ===================== */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(34px, -26px) scale(1.1); }
+  66% { transform: translate(-24px, 22px) scale(0.94); }
+}
+@keyframes fall {
+  0% { transform: translate3d(0, -14vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: var(--fo, 0.92); }
+  92% { opacity: var(--fo, 0.92); }
+  100% { transform: translate3d(var(--drift, 0px), 114vh, 0) rotate(var(--spin, 360deg)); opacity: 0; }
+}
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  60% { transform: scale(1); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+.animate-floaty { animation: floaty 5.5s ease-in-out infinite; }
+.animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+
+/* 3d flip (memory cards) */
+.perspective { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+
+/* scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* equalizer bars */
+.eq-bar { animation: eq 0.7s ease-in-out infinite; transform-origin: bottom; }
